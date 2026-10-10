@@ -15,6 +15,12 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Binary cache for nixos-intel-npu (filled by its CI, incl. this laptop's runner).
+  nix.settings.extra-substituters = [ "https://nixos-intel-npu.cachix.org" ];
+  nix.settings.extra-trusted-public-keys = [
+    "nixos-intel-npu.cachix.org-1:ikhkuI/crInBQxA1PBUQAupWk13HfJCDAIYHHn7/g3A="
+  ];
+
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
