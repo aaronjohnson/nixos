@@ -37,6 +37,7 @@
 
   environment.systemPackages = with pkgs; [
     fbcat grim      # fbcat provides fbgrab (console screenshots)
+    file            # identify file types
     tofi
     yazi
     wl-clipboard
