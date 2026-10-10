@@ -24,10 +24,24 @@
       "intel-npu"
     ];
     replace = true;
+    # A fixed user instead of systemd's DynamicUser, whose state and logs sit in
+    # root-only /var/lib/private. With a fixed group, the logs (including live job
+    # output under pages/) can be group-readable, and amj is in that group.
+    user = "github-runner";
+    group = "github-runner";
+    serviceOverrides.LogsDirectoryMode = "0750";
     # nix for the builds, cachix so the workflow can push results to the cache.
     extraPackages = [
       config.nix.package
       pkgs.cachix
     ];
   };
+
+  users.users.github-runner = {
+    isSystemUser = true;
+    group = "github-runner";
+  };
+  users.groups.github-runner = { };
+  # Read-only access to the runner's logs for amj.
+  users.users.amj.extraGroups = [ "github-runner" ];
 }
