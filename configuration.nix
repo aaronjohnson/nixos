@@ -18,6 +18,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./github-runner.nix   # self-hosted CI runner for nixos-intel-npu
       ./power.nix
     ];
 
