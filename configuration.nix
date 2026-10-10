@@ -43,6 +43,8 @@
   environment.variables.EDITOR = "emacs -nw";
 
   environment.systemPackages = with pkgs; [
+    btop
+    nvtopPackages.intel
     fbcat grim      # fbcat provides fbgrab (console screenshots)
     file            # identify file types
     bc              # command-line calculator
