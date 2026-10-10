@@ -29,7 +29,11 @@
     # output under pages/) can be group-readable, and amj is in that group.
     user = "github-runner";
     group = "github-runner";
-    serviceOverrides.LogsDirectoryMode = "0750";
+    serviceOverrides = {
+      LogsDirectoryMode = "0750";
+      # The module default (0066) makes the logs unreadable even to the group.
+      UMask = "0027";
+    };
     # nix for the builds, cachix so the workflow can push results to the cache.
     extraPackages = [
       config.nix.package
