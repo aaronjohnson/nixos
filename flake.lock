@@ -21,6 +21,26 @@
         "type": "github"
       }
     },
+    "nixos-intel-npu": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791655537,
+        "narHash": "sha256-s3VFuviBCwpG9qRN016+XBe2ikjylJMsqCFs1bOBHhE=",
+        "owner": "aaronjohnson",
+        "repo": "nixos-intel-npu",
+        "rev": "fdf4b22d05458d905225af6dcd67142e85f4616b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "aaronjohnson",
+        "repo": "nixos-intel-npu",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1791456040,
@@ -40,6 +60,7 @@
     "root": {
       "inputs": {
         "claude-code-flake": "claude-code-flake",
+        "nixos-intel-npu": "nixos-intel-npu",
         "nixpkgs": "nixpkgs"
       }
     },

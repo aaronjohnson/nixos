@@ -10,7 +10,8 @@
     "073642" "cb4b16" "586e75" "657b83" "839496" "6c71c4" "93a1a1" "fdf6e3"
   ];
 
-  hardware.cpu.intel.npu.enable = true;
+  # Intel NPU driver plus its model compiler (from the nixos-intel-npu flake).
+  hardware.intel-npu-compiler.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
