@@ -1,0 +1,8 @@
+# `nixos-rebuild build` / `nix build` output links
+result
+result-*
+# Editor leftovers
+*~
+\#*#
+.#*
+*.swp
