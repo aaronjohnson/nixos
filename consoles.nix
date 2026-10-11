@@ -72,8 +72,11 @@ in
   users.users.console-tui = {
     isSystemUser = true;
     group = "console-tui";
-    # nvtop reads the GPU through its render node.
-    extraGroups = [ "video" "render" ];
+    # nvtop reads the GPU through its render node (render group) only. Not
+    # video: that also opens /dev/dri/card0, and whoever opens it while no one
+    # holds the display becomes DRM master, which left Hyprland unable to take
+    # the display back after a console switch (2026-10-10).
+    extraGroups = [ "render" ];
     home = "/var/lib/console-tui";
     description = "btop and nvtop on tty11 and tty10";
   };
