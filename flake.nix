@@ -7,9 +7,11 @@
     claude-code-flake.inputs.nixpkgs.follows = "nixpkgs";
     nixos-intel-npu.url = "github:aaronjohnson/nixos-intel-npu";
     nixos-intel-npu.inputs.nixpkgs.follows = "nixpkgs";
+    jantar.url = "git+file:///home/amj/src/jantar";
+    jantar.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, claude-code-flake, nixos-intel-npu, ... }@inputs: {
+  outputs = { self, nixpkgs, claude-code-flake, nixos-intel-npu, jantar, ... }@inputs: {
 
     nixosConfigurations = {
 
@@ -19,6 +21,7 @@
 	modules = [
           ./configuration.nix
           nixos-intel-npu.nixosModules.default   # Intel NPU model compiler
+          jantar.nixosModules.default            # dashboard on VT12
 	];
       };
     };

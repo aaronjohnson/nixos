@@ -21,6 +21,26 @@
         "type": "github"
       }
     },
+    "jantar": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791692732,
+        "narHash": "sha256-cWtY1mujOvhkJ7JG/+q/0ATUFSLGQ2Rt+Xe/w3koMKM=",
+        "ref": "refs/heads/main",
+        "rev": "7d6814a1864ec35b579696ea7dacef853eddd646",
+        "revCount": 36,
+        "type": "git",
+        "url": "file:///home/amj/src/jantar"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:///home/amj/src/jantar"
+      }
+    },
     "nixos-intel-npu": {
       "inputs": {
         "nixpkgs": [
@@ -60,6 +80,7 @@
     "root": {
       "inputs": {
         "claude-code-flake": "claude-code-flake",
+        "jantar": "jantar",
         "nixos-intel-npu": "nixos-intel-npu",
         "nixpkgs": "nixpkgs"
       }
