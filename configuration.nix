@@ -93,6 +93,12 @@
 
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
+  # Log why a connection fails, not just that it did: INFO overall, and the
+  # DHCP and IPv4 address steps in detail (they only log on lease events, so
+  # this stays small). Added after a Wi-Fi roam lost its address on
+  # 2026-10-10 and the WARN-level log couldn't say why.
+  networking.networkmanager.logLevel = "INFO";
+  networking.networkmanager.settings.logging.domains = "DEFAULT,DHCP4:DEBUG,DHCP6:DEBUG,IP4:DEBUG";
   #networking.wireless.enable = false;
 
   # Set your time zone.
