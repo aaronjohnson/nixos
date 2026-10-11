@@ -10,5 +10,10 @@
     backend = "cairo";
     # Read the CI runner's step/progress for the footer.
     extraGroups = [ "github-runner" ];
+    # RAPL power breakdown (platform, package, cores, graphics, memory). This
+    # gives the jantar group read access to counters the kernel keeps
+    # root-only since the Platypus attack; jantar has no network access.
+    # Decided 2026-10-10.
+    powercap = true;
   };
 }
