@@ -28,11 +28,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791694376,
-        "narHash": "sha256-uq9hQJMqKKBzzjZD1iJ2lbhj/x5wKs8VqDmTVU+6H2s=",
+        "lastModified": 1791694736,
+        "narHash": "sha256-+MJNuo72OKZp5PDD/SiteetVlxye26FHOfPUE8RxXcs=",
         "ref": "refs/heads/main",
-        "rev": "f9bcd0379c9b1f5341df1ad5688222dca45253bd",
-        "revCount": 39,
+        "rev": "6274dd2bf40e5089b850e52eb877b4742a6bbfe1",
+        "revCount": 40,
         "type": "git",
         "url": "file:///home/amj/src/jantar"
       },

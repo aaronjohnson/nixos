@@ -15,5 +15,7 @@
     # root-only since the Platypus attack; jantar has no network access.
     # Decided 2026-10-10.
     powercap = true;
+    # Calibrated 2026-10-10: the FIDO key in the right front bay is USB 3-3.
+    usbBays = { "3-3" = "port1"; };
   };
 }
