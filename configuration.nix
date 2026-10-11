@@ -193,7 +193,7 @@
     isNormalUser = true;
     uid = 1000;
     description = "Aaron";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "video" ]; # video: /dev/fb0 for hud --fb
   };
 
   # users.users.alice = {
