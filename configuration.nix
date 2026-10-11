@@ -149,9 +149,18 @@
 
   time.timeZone = "America/Los_Angeles";
 
+  # Text consoles use the same Japanese layout as the desktop...
+  console.useXkbConfig = true;
+  # ...but the boot-time disk unlock prompt keeps the US layout the LUKS passphrase
+  # was set with (with systemd in the initrd, NixOS copies the console keymap there).
+  boot.initrd.systemd.contents."/etc/vconsole.conf".source = lib.mkForce (
+    pkgs.writeText "vconsole.conf" "KEYMAP=us\n"
+  );
+
   services.xserver.xkb = {
     layout = "jp";
     model = "jp106";
+    options = "ctrl:nocaps"; # Caps Lock (英数) as an extra Ctrl, as in Hyprland
     variant = "";
   };
   
