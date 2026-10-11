@@ -17,6 +17,7 @@
     powercap = true;
     # Calibrated 2026-10-10 by moving the FIDO key (USB 2) between bays.
     usbBays = {
+      "3-2" = "port0"; # right back
       "3-3" = "port1"; # right front
       "3-4" = "port2"; # left front
       "3-5" = "port3"; # left back
