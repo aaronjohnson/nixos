@@ -27,6 +27,7 @@
       ./github-runner.nix   # self-hosted CI runner for nixos-intel-npu
       ./power.nix
       ./jantar.nix          # dashboard on VT12 (Ctrl+Alt+F12)
+      ./consoles.nix        # btop on VT11, nvtop on VT10
     ];
 
   environment.sessionVariables = {
