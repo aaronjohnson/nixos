@@ -7,7 +7,7 @@
     claude-code-flake.inputs.nixpkgs.follows = "nixpkgs";
     nixos-intel-npu.url = "github:aaronjohnson/nixos-intel-npu";
     nixos-intel-npu.inputs.nixpkgs.follows = "nixpkgs";
-    jantar.url = "git+file:///home/amj/src/jantar";
+    jantar.url = "github:aaronjohnson/jantar";
     jantar.inputs.nixpkgs.follows = "nixpkgs";
   };
 

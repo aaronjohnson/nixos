@@ -30,15 +30,15 @@
       "locked": {
         "lastModified": 1791699961,
         "narHash": "sha256-64sd/k2kSjVxWMCXzanJ5nXWKR804kdgM6cqL7BVtYw=",
-        "ref": "refs/heads/dhruva",
+        "owner": "aaronjohnson",
+        "repo": "jantar",
         "rev": "ce2fce8e1bde941e28dbb801052b6c1159ddfde5",
-        "revCount": 47,
-        "type": "git",
-        "url": "file:///home/amj/src/jantar"
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/amj/src/jantar"
+        "owner": "aaronjohnson",
+        "repo": "jantar",
+        "type": "github"
       }
     },
     "nixos-intel-npu": {
