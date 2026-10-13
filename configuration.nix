@@ -59,6 +59,20 @@
     gh
     vim
     iw
+    framework-tool  # framework_tool: EC queries, e.g. --privacy for mic/camera switch state
+    # ectool: raw Framework EC commands (gpioget mic_sw, cam_en). nixpkgs pins
+    # an April 2024 snapshot; track upstream for newer boards.
+    (fw-ectool.overrideAttrs (old: {
+      version = "0.0.2-unstable-2026-06-05";
+      src = fetchFromGitLab {
+        domain = "gitlab.howett.net";
+        owner = "DHowett";
+        repo = "ectool";
+        rev = "38f92b1f2773c30c0d911453051619c0a07773d3";
+        hash = "sha256-FTW770CEos8PvTrhmYZrX8cCg9vNCLL0DP/k24LR1QA=";
+      };
+      postPatch = "";  # upstream already raised cmake_minimum_required
+    }))
     hyprpolkitagent
     mako hyprlock hypridle hyprshot hyprpaper pavucontrol
     hyprsunset hyprpicker blueman
