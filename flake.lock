@@ -28,11 +28,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791874335,
-        "narHash": "sha256-JJeRPvUAT7l8siQhtIKBhsC28sam9yhDK1vAmYJatXE=",
+        "lastModified": 1791875985,
+        "narHash": "sha256-ol/UiFqIjy8ago0lJyhtxaq8siIDPSZ8axu7I+8L7VU=",
         "owner": "aaronjohnson",
         "repo": "jantar",
-        "rev": "81828c16b062738bf05fe3a7ebf00d723398a04b",
+        "rev": "e5d1d03f7d92197e393d227ce56911c63b3cde15",
         "type": "github"
       },
       "original": {
