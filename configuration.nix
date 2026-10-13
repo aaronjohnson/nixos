@@ -78,6 +78,10 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  # Boot menu: keep only the 10 newest generations, and use the firmware's lowest-resolution
+  # text mode (80x25) so the menu text is as large as it gets.
+  boot.loader.systemd-boot.configurationLimit = 10;
+  boot.loader.systemd-boot.consoleMode = "0";
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -127,7 +131,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd '${pkgs.uwsm}/bin/uwsm start hyprland.desktop'";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --asterisks --cmd '${pkgs.uwsm}/bin/uwsm start hyprland.desktop'";
         user = "greeter";
       };
     };
@@ -184,7 +188,41 @@
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  # Let the video group (amj is in it) set screen and keyboard brightness directly, so
+  # hypridle's dimming and the keyboard-light fade work from a background service.
+  services.udev.packages = [ pkgs.brightnessctl ];   # backlight -> video group
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="leds", KERNEL=="chromeos::kbd_backlight", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/leds/%k/brightness", RUN+="${pkgs.coreutils}/bin/chmod g+w /sys/class/leds/%k/brightness"
+  '';
+
+  # GNOME's gcr-ssh-agent already runs (and holds the git signing key once unlocked at
+  # login); point every session at it so signed commits work without a prompt.
+  environment.extraInit = ''
+    if [ -z "$SSH_AUTH_SOCK" ] && [ -n "$XDG_RUNTIME_DIR" ]; then
+      export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
+    fi
+  '';
+
+  services.printing.enable = true;
+  # mDNS so CUPS can resolve the printer's .local name if DHCP moves it.
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+  };
+  # HP LaserJet Pro M118dw on the LAN, driverless (IPP Everywhere).
+  hardware.printers = {
+    ensurePrinters = [{
+      name = "HP_M118dw";
+      location = "Home";
+      deviceUri = "ipp://NPI52C2C4.local/ipp/print";
+      model = "everywhere";
+      ppdOptions = {
+        PageSize = "A4";
+        Duplex = "None";
+      };
+    }];
+    ensureDefaultPrinter = "HP_M118dw";
+  };
 
   # Enable sound.
   # services.pulseaudio.enable = true;
