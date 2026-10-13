@@ -27,6 +27,7 @@
       ./github-runner.nix   # self-hosted CI runner for nixos-intel-npu
       ./power.nix
       ./jantar.nix          # dashboard on VT12 (Ctrl+Alt+F12)
+      ./privacy.nix         # mic/camera switch state for the bar
       # ./consoles.nix      # btop on VT11, nvtop on VT10: off for now (Hyprland lost the
       #                     # display on returning from them, 2026-10-10)
     ];
@@ -42,6 +43,11 @@
     enable = true;
     xwayland.enable = true;
   };
+
+  # Polkit agent: graphical password prompts for pkexec and friends.
+  # Ships its own user unit; start it with the graphical session.
+  systemd.packages = [ pkgs.hyprpolkitagent ];
+  systemd.user.services.hyprpolkitagent.wantedBy = [ "graphical-session.target" ];
 
   environment.variables.EDITOR = "emacs -nw";
 
