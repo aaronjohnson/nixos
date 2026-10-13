@@ -16,6 +16,7 @@
     serviceConfig = {
       RuntimeDirectory = "privacy-switches";
       RuntimeDirectoryMode = "0755";
+      RuntimeDirectoryPreserve = "yes";  # keep the file across restarts
       Restart = "always";
       RestartSec = 10;
     };
@@ -28,8 +29,8 @@
           /Camera:/     { c = ($2 == "Connected") ? "on" : "off" }
           END           { if (m != "" && c != "") print m, c }')
         if [ -n "$now" ] && [ "$now" != "$prev" ]; then
-          echo "$now" > /run/privacy-switches/state.new
-          mv /run/privacy-switches/state.new /run/privacy-switches/state
+          # In place, not write-and-rename: a rename drops the bar's file watch.
+          echo "$now" > /run/privacy-switches/state
           prev=$now
         fi
         sleep 3
