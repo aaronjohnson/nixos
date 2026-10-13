@@ -111,6 +111,9 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
+    # Intel's compute runtime (OpenCL and Level Zero for the GPU): lets
+    # OpenVINO run on the Arc B390, for comparing GPU with NPU and CPU.
+    extraPackages = [ pkgs.intel-compute-runtime ];
   };
 
   hardware.enableRedistributableFirmware = true;
