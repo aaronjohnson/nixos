@@ -46,6 +46,7 @@
   environment.variables.EDITOR = "emacs -nw";
 
   environment.systemPackages = with pkgs; [
+    libnotify       # notify-send, for script notifications (mako shows them)
     btop
     nvtopPackages.intel
     fbcat grim      # fbcat provides fbgrab (console screenshots)
