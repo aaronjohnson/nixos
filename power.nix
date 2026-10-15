@@ -13,6 +13,10 @@
   # and runs hypridle as a user service. Both read their configs from ~/.config/hypr/.
   programs.hyprlock.enable = true;
 
+  # The hypridle service runs with its own short PATH (hyprland, hyprlock, coreutils),
+  # so the idle dimming and kbd-fade.sh need brightnessctl added to it explicitly.
+  systemd.user.services.hypridle.path = [ pkgs.brightnessctl ];
+
   # Media keys (play/pause/next) in hyprland.lua need this.
   environment.systemPackages = [ pkgs.playerctl ];
 
