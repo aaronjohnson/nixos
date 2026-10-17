@@ -63,6 +63,7 @@
     wl-clipboard
     git
     gh
+    google-cloud-sdk  # gcloud: enable APIs, Firestore, etc. on the mqqn-net Firebase project
     vim
     iw
     framework-tool  # framework_tool: EC queries, e.g. --privacy for mic/camera switch state
