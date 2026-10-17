@@ -26,6 +26,7 @@
       ./hardware-configuration.nix
       ./github-runner.nix   # self-hosted CI runner for nixos-intel-npu
       ./power.nix
+      ./battery-log.nix     # battery drain log and `battery-report`
       ./jantar.nix          # dashboard on VT12 (Ctrl+Alt+F12)
       ./privacy.nix         # mic/camera switch state for the bar
       # ./consoles.nix      # btop on VT11, nvtop on VT10: off for now (Hyprland lost the
