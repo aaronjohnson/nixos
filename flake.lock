@@ -41,6 +41,27 @@
         "type": "github"
       }
     },
+    "misra": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792365894,
+        "narHash": "sha256-Yp8iG0kCAnjeQsXdN22NOxaQzehWk9RunXPC2IQCZkI=",
+        "owner": "aaronjohnson",
+        "repo": "misra",
+        "rev": "059d7f0f796af9e345af5069d28669128eacb92d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "aaronjohnson",
+        "ref": "sakshi",
+        "repo": "misra",
+        "type": "github"
+      }
+    },
     "nixos-intel-npu": {
       "inputs": {
         "nixpkgs": [
@@ -81,6 +102,7 @@
       "inputs": {
         "claude-code-flake": "claude-code-flake",
         "jantar": "jantar",
+        "misra": "misra",
         "nixos-intel-npu": "nixos-intel-npu",
         "nixpkgs": "nixpkgs"
       }

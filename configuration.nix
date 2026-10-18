@@ -27,6 +27,7 @@
       ./github-runner.nix   # self-hosted CI runner for nixos-intel-npu
       ./power.nix
       ./jantar.nix          # dashboard on VT12 (Ctrl+Alt+F12)
+      ./misra.nix           # cross-checks power and network sensors
       ./privacy.nix         # mic/camera switch state for the bar
       # ./consoles.nix      # btop on VT11, nvtop on VT10: off for now (Hyprland lost the
       #                     # display on returning from them, 2026-10-10)

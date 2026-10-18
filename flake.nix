@@ -9,9 +9,11 @@
     nixos-intel-npu.inputs.nixpkgs.follows = "nixpkgs";
     jantar.url = "github:aaronjohnson/jantar";
     jantar.inputs.nixpkgs.follows = "nixpkgs";
+    misra.url = "github:aaronjohnson/misra/sakshi";
+    misra.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, claude-code-flake, nixos-intel-npu, jantar, ... }@inputs: {
+  outputs = { self, nixpkgs, claude-code-flake, nixos-intel-npu, jantar, misra, ... }@inputs: {
 
     nixosConfigurations = {
 
@@ -22,6 +24,7 @@
           ./configuration.nix
           nixos-intel-npu.nixosModules.default   # Intel NPU model compiler
           jantar.nixosModules.default            # dashboard on VT12
+          misra.nixosModules.default             # sensor cross-checks
 	];
       };
     };
