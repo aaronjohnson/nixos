@@ -52,6 +52,10 @@
   # devShell on cd, so tools come from the project's flake, not global installs.
   programs.direnv.enable = true;
 
+  # Other people's code lives in /usr/src, outside ~: Claude Code trusts ~ (and so
+  # everything under it), while a checkout in /usr/src still gets the trust prompt.
+  systemd.tmpfiles.rules = [ "d /usr/src 0755 amj users -" ];
+
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -75,8 +79,6 @@
     wl-clipboard
     git
     gh
-    google-cloud-sdk  # gcloud: enable APIs, Firestore, etc. on the mqqn-net Firebase project
-    firebase-tools    # firebase: Hosting deploys and Firestore rules (puzzles-site ops/)
     rclone            # Google Drive (gdrive: remote)
     google-chrome     # for Claude in Chrome: Claude Code drives the browser (Gemini covers; I press Generate)
     vim
@@ -108,7 +110,7 @@
     brightnessctl
     waybar
     tuigreet
-    nodejs
+    # node and npm come from programs.npm; firebase and gcloud from each project's flake devShell
   ];
 
   # Icons only: fontconfig falls back to it for Nerd Font glyphs, so the bar,
