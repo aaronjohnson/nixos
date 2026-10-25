@@ -48,16 +48,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1792964251,
-        "narHash": "sha256-aMQB9MkX1lOnut3TPab8LQHG3aicq2umWJxqNNGh+Gg=",
+        "lastModified": 1792964730,
+        "narHash": "sha256-R0gKdioBOall+QZkF8WiRvpDAk7VPKFgr9ZpIT4qSPQ=",
         "owner": "aaronjohnson",
         "repo": "misra",
-        "rev": "ce1ce26d2acd43676699ea4bbcdbf72b56772224",
+        "rev": "1cd65766a4cba43062111dd1dc5c6267f3297ab6",
         "type": "github"
       },
       "original": {
         "owner": "aaronjohnson",
-        "ref": "sakshi",
+        "ref": "v0.7.1",
         "repo": "misra",
         "type": "github"
       }
@@ -69,11 +69,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792963195,
-        "narHash": "sha256-tIDfTCVjNos4l5y6WJWHjhJFyKjbllvKdZN8Jx12G94=",
+        "lastModified": 1792967104,
+        "narHash": "sha256-l5LjVA3Oio6wetRKPFhiePiDiPJnEy4O1s8joKOcUgc=",
         "owner": "aaronjohnson",
         "repo": "nixos-intel-npu",
-        "rev": "baf34a3ffb770b814f0bdd0ca0e1a26c6a309f03",
+        "rev": "f5e45acea9a7850ac1468d2e6ae322caa9013915",
         "type": "github"
       },
       "original": {

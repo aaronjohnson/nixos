@@ -9,7 +9,7 @@
     nixos-intel-npu.inputs.nixpkgs.follows = "nixpkgs";
     jantar.url = "github:aaronjohnson/jantar";
     jantar.inputs.nixpkgs.follows = "nixpkgs";
-    misra.url = "github:aaronjohnson/misra/sakshi";
+    misra.url = "github:aaronjohnson/misra/v0.7.1";
     misra.inputs.nixpkgs.follows = "nixpkgs";
   };
 
