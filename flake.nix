@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     claude-code-flake.url = "github:sadjow/claude-code-nix";
     claude-code-flake.inputs.nixpkgs.follows = "nixpkgs";
-    nixos-intel-npu.url = "github:aaronjohnson/nixos-intel-npu";
+    nixos-intel-npu.url = "github:aaronjohnson/nixos-intel-npu/main";
     nixos-intel-npu.inputs.nixpkgs.follows = "nixpkgs";
     jantar.url = "github:aaronjohnson/jantar";
     jantar.inputs.nixpkgs.follows = "nixpkgs";
