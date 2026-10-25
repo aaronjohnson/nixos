@@ -45,10 +45,9 @@
     xwayland.enable = true;
   };
 
-  # Polkit agent: graphical password prompts for pkexec and friends.
-  # Ships its own user unit; start it with the graphical session.
-  systemd.packages = [ pkgs.hyprpolkitagent ];
-  systemd.user.services.hyprpolkitagent.wantedBy = [ "graphical-session.target" ];
+  # Polkit agent: quickshell (~/dotfiles/quickshell/PolkitPrompt.qml) asks for the
+  # password for pkexec and friends, framed like the other popups. If quickshell is
+  # not running, pkexec in a terminal (e.g. land) falls back to a text prompt.
 
   environment.variables.EDITOR = "emacs -nw";
 
@@ -66,7 +65,7 @@
     gh
     google-cloud-sdk  # gcloud: enable APIs, Firestore, etc. on the mqqn-net Firebase project
     firebase-tools    # firebase: Hosting deploys and Firestore rules (puzzles-site ops/)
-    rclone            # Google Drive (gdrive: remote), e.g. W7LT label files
+    rclone            # Google Drive (gdrive: remote)
     vim
     iw
     framework-tool  # framework_tool: EC queries, e.g. --privacy for mic/camera switch state
@@ -83,7 +82,6 @@
       };
       postPatch = "";  # upstream already raised cmake_minimum_required
     }))
-    hyprpolkitagent
     mako hyprlock hypridle hyprshot hyprpaper pavucontrol
     hyprsunset hyprpicker blueman
     ((emacsPackagesFor emacs-pgtk).emacsWithPackages (p: [
