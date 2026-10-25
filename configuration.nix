@@ -203,7 +203,28 @@
     options = "ctrl:nocaps"; # Caps Lock (英数) as an extra Ctrl, as in Hyprland
     variant = "";
   };
-  
+
+  # Keychron K2 Pro over USB-C (3434:0223). Its side switch stays on Mac for the Mac,
+  # ChromeOS and Android, so its top row sends Mac media keys; here they become
+  # F1-F12 (Fn+F still gives F-keys) and the Super+F binds work without Fn. Done in
+  # the kernel keymap because the brightness/volume keys come from an interface
+  # Hyprland treats as a mouse. F5/F6 are keyboard-backlight keys that never leave
+  # the keyboard. US layout for it: ~/dotfiles/hypr/keychron-k2-pro.xkb.
+  # After a switch, unplug and replug the keyboard.
+  services.udev.extraHwdb = ''
+    evdev:input:b0003v3434p0223*
+     KEYBOARD_KEY_c0070=f1
+     KEYBOARD_KEY_c006f=f2
+     KEYBOARD_KEY_c029f=f3
+     KEYBOARD_KEY_c02a2=f4
+     KEYBOARD_KEY_c00b6=f7
+     KEYBOARD_KEY_c00cd=f8
+     KEYBOARD_KEY_c00b5=f9
+     KEYBOARD_KEY_c00e2=f10
+     KEYBOARD_KEY_c00ea=f11
+     KEYBOARD_KEY_c00e9=f12
+  '';
+
   i18n.inputMethod = {
      enable = true;
      type = "fcitx5";
