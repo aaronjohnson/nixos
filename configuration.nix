@@ -66,6 +66,7 @@
     google-cloud-sdk  # gcloud: enable APIs, Firestore, etc. on the mqqn-net Firebase project
     firebase-tools    # firebase: Hosting deploys and Firestore rules (puzzles-site ops/)
     rclone            # Google Drive (gdrive: remote)
+    google-chrome     # for Claude in Chrome: Claude Code drives the browser (Gemini covers; I press Generate)
     vim
     iw
     framework-tool  # framework_tool: EC queries, e.g. --privacy for mic/camera switch state
@@ -185,6 +186,14 @@
       [org.gnome.mutter]
       experimental-features=['scale-monitor-framebuffer']
     '';
+  };
+
+  # Chrome policy (applies to google-chrome too): force-install the Claude extension from the
+  # Web Store. `claude --chrome` (or /chrome) then writes its native-messaging host into
+  # ~/.config/google-chrome/NativeMessagingHosts/; rerun /chrome if it breaks after an update.
+  programs.chromium = {
+    enable = true;
+    extensions = [ "fcoeoabgfenejglbffodgkkbkcdhcgfn" ];  # Claude (Anthropic)
   };
 
   nixpkgs.config.allowUnfree = true;
