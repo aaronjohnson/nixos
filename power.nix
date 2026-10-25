@@ -44,5 +44,10 @@
   services.logind.settings.Login = {
     HandleLidSwitch = "suspend-then-hibernate";
     HandleLidSwitchExternalPower = "suspend";
+    # The power button belongs to Hyprland: a tap locks, a hold opens the
+    # quickshell power menu (~/dotfiles/bin/power-button). A 10 s hold still
+    # forces the laptop off in firmware.
+    HandlePowerKey = "ignore";
+    HandlePowerKeyLongPress = "ignore";
   };
 }

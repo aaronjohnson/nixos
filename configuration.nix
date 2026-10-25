@@ -99,6 +99,10 @@
     nodejs
   ];
 
+  # Icons only: fontconfig falls back to it for Nerd Font glyphs, so the bar,
+  # kitty and the power menu can use icons without changing typeface.
+  fonts.packages = with pkgs; [ nerd-fonts.symbols-only ];
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
