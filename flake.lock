@@ -48,11 +48,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792959446,
-        "narHash": "sha256-dzxn2zPRZal9FM1Dd4Bf2qnSs6eNwvvU44hRkQyi7Zc=",
+        "lastModified": 1792960590,
+        "narHash": "sha256-C91fNRrBhOoo98Yw5LvlyqimU6Sr37BiU+rNPB7GeFo=",
         "owner": "aaronjohnson",
         "repo": "misra",
-        "rev": "754cf9782bc6df442f7f56fa67bcbc38df9d9ba1",
+        "rev": "371fe39da42051695b99937bbf20b6155064a602",
         "type": "github"
       },
       "original": {
