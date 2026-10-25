@@ -66,6 +66,7 @@
     gh
     google-cloud-sdk  # gcloud: enable APIs, Firestore, etc. on the mqqn-net Firebase project
     firebase-tools    # firebase: Hosting deploys and Firestore rules (puzzles-site ops/)
+    rclone            # Google Drive (gdrive: remote), e.g. W7LT label files
     vim
     iw
     framework-tool  # framework_tool: EC queries, e.g. --privacy for mic/camera switch state
