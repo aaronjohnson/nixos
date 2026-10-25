@@ -28,7 +28,11 @@
   # Where the kernel looks for the hibernation image at boot (after you unlock
   # the disk). The offset locates the swap file inside the btrfs volume.
   boot.resumeDevice = "/dev/mapper/enc-pv";
-  boot.kernelParams = [ "resume_offset=5514496" ];  
+  # acpi=copy_dsdt: keep the firmware's ACPI table (DSDT) in kernel memory, so it is saved in
+  # the hibernation image. Without it, resuming on 2026-10-17 found the firmware had reused the
+  # DSDT's memory ("The DSDT has been corrupted or replaced"): every ACPI method failed from then
+  # on (lid, battery and charger status, the USB-C controller), until a reboot.
+  boot.kernelParams = [ "resume_offset=5514496" "acpi=copy_dsdt" ];
 
   # Sleep normally, then hibernate after 2 hours asleep (or sooner if the
   # battery runs low), so a closed laptop never drains flat.
