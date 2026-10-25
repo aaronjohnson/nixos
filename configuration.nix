@@ -40,6 +40,18 @@
 
   programs.uwsm.enable = true;
 
+  # npm never runs package install scripts (preinstall/postinstall), the usual
+  # way a bad package gets code onto the machine. Written to /etc/npmrc.
+  programs.npm = {
+    enable = true;
+    package = pkgs.nodejs;
+    npmrc = "ignore-scripts=true";
+  };
+
+  # direnv + nix-direnv: a project's `.envrc` containing `use flake` enters its
+  # devShell on cd, so tools come from the project's flake, not global installs.
+  programs.direnv.enable = true;
+
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
