@@ -28,11 +28,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792035702,
-        "narHash": "sha256-Xv3W9y9z9sVEuTubv6QVL8kgYi0pOSLxBMQp22hYygk=",
+        "lastModified": 1792961442,
+        "narHash": "sha256-eKHPqdavvIwM+KT1YG5aC5OzagXwC5MpVKEC/eydKmo=",
         "owner": "aaronjohnson",
         "repo": "jantar",
-        "rev": "fefaa4c5422549164631f878e80f7df168475808",
+        "rev": "d488621335af443ddb74ac53e927fdd66a96be45",
         "type": "github"
       },
       "original": {
@@ -48,11 +48,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792960590,
-        "narHash": "sha256-C91fNRrBhOoo98Yw5LvlyqimU6Sr37BiU+rNPB7GeFo=",
+        "lastModified": 1792960952,
+        "narHash": "sha256-G90nJI/qyOgVL1dfEmcBRg+lNex7Ne4wn/UPKi2janI=",
         "owner": "aaronjohnson",
         "repo": "misra",
-        "rev": "371fe39da42051695b99937bbf20b6155064a602",
+        "rev": "88cdf774d9a7356a82b4e97238730306e131d0f5",
         "type": "github"
       },
       "original": {
@@ -69,11 +69,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791655537,
-        "narHash": "sha256-s3VFuviBCwpG9qRN016+XBe2ikjylJMsqCFs1bOBHhE=",
+        "lastModified": 1792961444,
+        "narHash": "sha256-BvdHZRNOEqBFe+4d4maieRaYkRsVssTIzEb8dRzT0vQ=",
         "owner": "aaronjohnson",
         "repo": "nixos-intel-npu",
-        "rev": "fdf4b22d05458d905225af6dcd67142e85f4616b",
+        "rev": "157685148c1c628a7cd19782451fb567fd55ab29",
         "type": "github"
       },
       "original": {
