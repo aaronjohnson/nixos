@@ -29,6 +29,7 @@
       ./jantar.nix          # dashboard on VT12 (Ctrl+Alt+F12)
       ./misra.nix           # cross-checks power and network sensors
       ./privacy.nix         # mic/camera switch state for the bar
+      ./games.nix           # Steam, gamemode, gamescope, Godot, Aseprite
       # ./consoles.nix      # btop on VT11, nvtop on VT10: off for now (Hyprland lost the
       #                     # display on returning from them, 2026-10-10)
     ];
