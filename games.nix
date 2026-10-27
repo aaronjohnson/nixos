@@ -9,6 +9,7 @@
 # governors while a game asks for it (launch option `gamemoderun %command%`),
 # so the battery-saving defaults in power.nix hold the rest of the time.
 # Remote Play and local game transfers stay off: they'd open firewall ports.
+# One narrow exception below: khel builds for the Steam Deck.
 { pkgs, ... }:
 
 {
@@ -18,6 +19,17 @@
   # Launch option: `gamescope -w 1280 -h 800 -F fsr -- %command%`.
   programs.gamescope.enable = true;
   programs.gamemode.enable = true;
+
+  # `khel serve` hands the game's latest build to the Steam Deck over
+  # the home Wi-Fi (the Deck has no password, so no SSH). Port 8765 is
+  # let in only from the home network, and nothing listens on it except
+  # while `khel serve` runs.
+  networking.firewall.extraCommands = ''
+    iptables -A nixos-fw -p tcp --dport 8765 -s 192.168.88.0/24 -j nixos-fw-accept
+  '';
+  networking.firewall.extraStopCommands = ''
+    iptables -D nixos-fw -p tcp --dport 8765 -s 192.168.88.0/24 -j nixos-fw-accept || true
+  '';
 
   environment.systemPackages = [
     # Game engine, GDScript; exports to Linux/Windows/web, and Steam via
