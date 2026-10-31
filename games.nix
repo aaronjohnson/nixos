@@ -21,14 +21,17 @@
   programs.gamemode.enable = true;
 
   # `khel serve` hands the game's latest build to the Steam Deck over
-  # the home Wi-Fi (the Deck has no password, so no SSH). Port 8765 is
-  # let in only from the home network, and nothing listens on it except
-  # while `khel serve` runs.
+  # the home Wi-Fi (the Deck has no password, so no SSH), and runs khel's
+  # server, which the Deck's updates and playing together go through.
+  # Ports 8765 and 4100 are let in only from the home network, and nothing
+  # listens on them except while `khel serve` runs.
   networking.firewall.extraCommands = ''
     iptables -A nixos-fw -p tcp --dport 8765 -s 192.168.88.0/24 -j nixos-fw-accept
+    iptables -A nixos-fw -p tcp --dport 4100 -s 192.168.88.0/24 -j nixos-fw-accept
   '';
   networking.firewall.extraStopCommands = ''
     iptables -D nixos-fw -p tcp --dport 8765 -s 192.168.88.0/24 -j nixos-fw-accept || true
+    iptables -D nixos-fw -p tcp --dport 4100 -s 192.168.88.0/24 -j nixos-fw-accept || true
   '';
 
   environment.systemPackages = [
