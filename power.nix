@@ -17,8 +17,12 @@
   # so the idle dimming and kbd-fade.sh need brightnessctl added to it explicitly.
   systemd.user.services.hypridle.path = [ pkgs.brightnessctl ];
 
-  # Media keys (play/pause/next) in hyprland.lua need this.
-  environment.systemPackages = [ pkgs.playerctl ];
+  # Media keys (play/pause/next) in hyprland.lua need this. mpv, with its MPRIS script so
+  # playerctl and those keys reach it, plays old-time radio for ~/dotfiles/bin/otr.
+  environment.systemPackages = [
+    pkgs.playerctl
+    (pkgs.mpv.override { scripts = [ pkgs.mpvScripts.mpris ]; })
+  ];
 
   # ---- Hibernation ----
   # A 64 GB swap file (>= RAM) on the encrypted btrfs volume, so the saved RAM
