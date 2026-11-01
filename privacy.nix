@@ -7,8 +7,10 @@
 # The EC's "camera" value means "streaming now", not the camera switch.
 #
 # Software kill (Super+F7, `privacy-toggle`): the webcam is de-authorized on
-# USB, so it disappears from the system, and the sound card drops to an
-# output-only profile with the capture switch off, so the mic has no source.
+# USB, so it disappears from the system, and the mic is cut twice: the sound
+# card's capture switch off (ALSA) and its PipeWire source muted. The card's
+# profile stays as it is: switching it to output-only (as this used to)
+# rebuilt the speakers' sink too and cut whatever was playing.
 # Both stay off across reboots until toggled back.
 { pkgs, ... }:
 
@@ -35,23 +37,19 @@ let
       mkdir -p "$(dirname "$saved")"
 
       dev=$(pw-dump | jq -r --arg c "$card" '.[] | select(.info.props["device.name"]? == $c) | .id')
-      profiles() { pw-dump "$dev" | jq -r '.[0].info.params.EnumProfile[] | "\(.index) \(.name)"'; }
-      active() { pw-dump "$dev" | jq -r '.[0].info.params.Profile[0] | "\(.index) \(.name)"'; }
+      # the card's mic sources (PipeWire nodes), to mute without touching its outputs
+      sources() { pw-dump | jq -r --argjson d "$dev" '.[] | select(.info.props["device.id"]? == $d and .info.props["media.class"]? == "Audio/Source") | .id'; }
 
       if [ -e ${flag} ]; then
         systemctl start camera-enable.service
-        if [ -s "$saved" ]; then wpctl set-profile "$dev" "$(cat "$saved")"; fi
+        # a profile saved by the old output-only toggle: put it back once
+        if [ -s "$saved" ]; then wpctl set-profile "$dev" "$(cat "$saved")"; rm -f "$saved"; sleep 1; fi
         amixer -q -c 0 sset Capture cap
+        for s in $(sources); do wpctl set-mute "$s" 0; done
         notify-send -a privacy -t 4000 "Mic and camera enabled" "Software privacy off"
       else
-        read -r idx name < <(active)
-        if [[ "$name" == *+input:* ]]; then
-          echo "$idx" > "$saved"
-          out=''${name%%+input:*}
-          new=$(profiles | awk -v n="$out" '$2 == n { print $1 }')
-          if [ -n "$new" ]; then wpctl set-profile "$dev" "$new"; fi
-        fi
         amixer -q -c 0 sset Capture nocap
+        for s in $(sources); do wpctl set-mute "$s" 1; done
         systemctl start camera-disable.service
         notify-send -a privacy -t 4000 "Mic and camera disabled" "Software privacy on"
       fi
