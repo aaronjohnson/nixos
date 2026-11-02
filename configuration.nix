@@ -284,6 +284,11 @@
   services.avahi = {
     enable = true;
     nssmdns4 = true;
+    # Answer to hadron.local on the home network (the Deck finds khel's server by name).
+    publish = {
+      enable = true;
+      addresses = true;
+    };
   };
   # HP LaserJet Pro M118dw on the LAN, driverless (IPP Everywhere).
   hardware.printers = {
