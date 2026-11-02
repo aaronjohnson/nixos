@@ -44,6 +44,15 @@
     HibernateDelaySec = "2h";
   };
 
+  # Save the session while there's still charge to save it with: UPower's own 2% is too
+  # tight under load, and hybrid sleep leaves less margin than writing the image and
+  # powering off. Claude Code stops itself earlier (~/dotfiles/bin/claude-battery-guard).
+  services.upower = {
+    percentageCritical = 7;
+    percentageAction = 5;
+    criticalPowerAction = "Hibernate";
+  };
+
   # Closing the lid: sleep-then-hibernate on battery, plain sleep when plugged in.
   services.logind.settings.Login = {
     HandleLidSwitch = "suspend-then-hibernate";
