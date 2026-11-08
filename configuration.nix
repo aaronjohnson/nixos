@@ -111,7 +111,11 @@
     brightnessctl
     waybar
     tuigreet
-    # node and npm come from programs.npm; firebase and gcloud from each project's flake devShell
+    # node and npm come from programs.npm. firebase and gcloud are clients of one shared
+    # backend (kosha's Firestore, the Hosting sites), so one version for the machine,
+    # not a pin per project; project devShells carry only what shapes their output.
+    firebase-tools
+    google-cloud-sdk
   ];
 
   # Icons only: fontconfig falls back to it for Nerd Font glyphs, so the bar,
