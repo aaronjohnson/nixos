@@ -199,13 +199,7 @@
     TTYVDisallocate = true;
   };
 
-  services.desktopManager.gnome = {
-    enable = true;
-    extraGSettingsOverrides = ''
-      [org.gnome.mutter]
-      experimental-features=['scale-monitor-framebuffer']
-    '';
-  };
+  services.desktopManager.gnome.enable = true;
 
   # Chrome policy (applies to google-chrome too): force-install the Claude extension from the
   # Web Store. `claude --chrome` (or /chrome) then writes its native-messaging host into
