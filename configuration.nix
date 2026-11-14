@@ -26,6 +26,7 @@
       ./hardware-configuration.nix
       ./github-runner.nix   # self-hosted CI runner for nixos-intel-npu
       ./power.nix
+      ./phone-fallback.nix  # Bluetooth tethering when Wi-Fi has no internet
       ./jantar.nix          # dashboard on VT12 (Ctrl+Alt+F12)
       ./misra.nix           # cross-checks power and network sensors
       ./privacy.nix         # mic/camera switch state for the bar
