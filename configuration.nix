@@ -71,6 +71,7 @@
 
   environment.systemPackages = with pkgs; [
     libnotify       # notify-send, for script notifications (mako shows them)
+    (callPackage ./pkgs/anthropic-cli.nix { })   # ant: the Claude API from the shell, `ant auth login`
     btop
     nvtopPackages.intel
     fbcat grim      # fbcat provides fbgrab (console screenshots)
