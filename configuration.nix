@@ -250,8 +250,10 @@
     # Keychron Q11 Ultra 8K (3434:12b0), also in Mac mode: the same top row, but only
     # F1-F9. Its knobs send the F10-F12 codes (mute, volume down/up), so those stay
     # volume and Super+Fn+F11/F12 opens suchi. Assumed to send the K2's Mac codes.
+    # The Q11 by cable or Bluetooth, and through its white Ultra-Link 8K receiver (d028).
     evdev:input:b0003v3434p12B0*
     evdev:input:b0005v3434p12B0*
+    evdev:input:b0003v3434pD028*
      KEYBOARD_KEY_c0070=f1
      KEYBOARD_KEY_c006f=f2
      KEYBOARD_KEY_c029f=f3
