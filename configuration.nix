@@ -282,6 +282,11 @@
   services.udev.packages = [ pkgs.brightnessctl ];   # backlight -> video group
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="leds", KERNEL=="chromeos::kbd_backlight", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/leds/%k/brightness", RUN+="${pkgs.coreutils}/bin/chmod g+w /sys/class/leds/%k/brightness"
+
+    # Keychron Launcher (launcher.keychron.com, Chrome WebHID) reads and remaps Keychron
+    # keyboards and mice through hidraw. uaccess gives the logged-in user access, for
+    # vendor 3434 only: the Q11 and K2 by cable, the Nape Pro through its Link dongle.
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", MODE="0660", TAG+="uaccess"
   '';
 
   # GNOME's gcr-ssh-agent already runs (and holds the git signing key once unlocked at
