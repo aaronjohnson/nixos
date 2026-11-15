@@ -279,15 +279,21 @@
   # Enable CUPS to print documents.
   # Let the video group (amj is in it) set screen and keyboard brightness directly, so
   # hypridle's dimming and the keyboard-light fade work from a background service.
-  services.udev.packages = [ pkgs.brightnessctl ];   # backlight -> video group
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="leds", KERNEL=="chromeos::kbd_backlight", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/leds/%k/brightness", RUN+="${pkgs.coreutils}/bin/chmod g+w /sys/class/leds/%k/brightness"
-
-    # Keychron Launcher (launcher.keychron.com, Chrome WebHID) reads and remaps Keychron
-    # keyboards and mice through hidraw. uaccess gives the logged-in user access, for
-    # vendor 3434 only: the Q11 and K2 by cable, the Nape Pro through its Link dongle.
-    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", MODE="0660", TAG+="uaccess"
   '';
+
+  # Keychron Launcher (launcher.keychron.com, Chrome WebHID) reads and remaps Keychron
+  # keyboards and mice through hidraw. uaccess gives the logged-in user access, for
+  # vendor 3434 only: the Q11 and K2 by cable, the Nape Pro through its Link dongle.
+  # Its own file, numbered before 73-seat-late.rules: that is where uaccess becomes
+  # an ACL, so the tag set in extraRules (99-local.rules) arrives too late.
+  services.udev.packages = [
+    pkgs.brightnessctl   # backlight -> video group (see above)
+    (pkgs.writeTextDir "lib/udev/rules.d/70-keychron-launcher.rules" ''
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", MODE="0660", TAG+="uaccess"
+    '')
+  ];
 
   # GNOME's gcr-ssh-agent already runs (and holds the git signing key once unlocked at
   # login); point every session at it so signed commits work without a prompt.
