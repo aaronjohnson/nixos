@@ -246,6 +246,19 @@
      KEYBOARD_KEY_c00e2=f10
      KEYBOARD_KEY_c00ea=f11
      KEYBOARD_KEY_c00e9=f12
+
+    # Keychron Q11 Ultra 8K (3434:12b0), also in Mac mode: the same top row, but only
+    # F1-F9. Its knobs send the F10-F12 codes (mute, volume down/up), so those stay
+    # volume and Super+Fn+F11/F12 opens suchi. Assumed to send the K2's Mac codes.
+    evdev:input:b0003v3434p12B0*
+    evdev:input:b0005v3434p12B0*
+     KEYBOARD_KEY_c0070=f1
+     KEYBOARD_KEY_c006f=f2
+     KEYBOARD_KEY_c029f=f3
+     KEYBOARD_KEY_c02a2=f4
+     KEYBOARD_KEY_c00b6=f7
+     KEYBOARD_KEY_c00cd=f8
+     KEYBOARD_KEY_c00b5=f9
   '';
 
   i18n.inputMethod = {
