@@ -28,15 +28,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1792961442,
-        "narHash": "sha256-eKHPqdavvIwM+KT1YG5aC5OzagXwC5MpVKEC/eydKmo=",
+        "lastModified": 1795380881,
+        "narHash": "sha256-lf6hshX37FWOMwv60zlL4gZKo58SvQd4UENo2QuytD8=",
         "owner": "aaronjohnson",
         "repo": "jantar",
-        "rev": "d488621335af443ddb74ac53e927fdd66a96be45",
+        "rev": "5e82d2ed22a51a7a4efe4952d0b8c994496833d5",
         "type": "github"
       },
       "original": {
         "owner": "aaronjohnson",
+        "ref": "dhruva",
         "repo": "jantar",
         "type": "github"
       }
@@ -62,34 +63,13 @@
         "type": "github"
       }
     },
-    "nixos-intel-npu": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1792967104,
-        "narHash": "sha256-l5LjVA3Oio6wetRKPFhiePiDiPJnEy4O1s8joKOcUgc=",
-        "owner": "aaronjohnson",
-        "repo": "nixos-intel-npu",
-        "rev": "f5e45acea9a7850ac1468d2e6ae322caa9013915",
-        "type": "github"
-      },
-      "original": {
-        "owner": "aaronjohnson",
-        "ref": "main",
-        "repo": "nixos-intel-npu",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1794042290,
-        "narHash": "sha256-ziZn2PvCJE5JEEpqTdxXwJpPB+L3YqoCpTAMCzyaP3U=",
+        "lastModified": 1795234589,
+        "narHash": "sha256-f/VVvxf5RsQgWVhUtefoca5ktVg0DA2bnkMOcmSnozo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "f4a03c008967841f2a0b3cb7c436fc6fc31671f6",
+        "rev": "2786a2a72088ecf32aea5b3ec52099e6a7cff78f",
         "type": "github"
       },
       "original": {
@@ -104,7 +84,6 @@
         "claude-code-flake": "claude-code-flake",
         "jantar": "jantar",
         "misra": "misra",
-        "nixos-intel-npu": "nixos-intel-npu",
         "nixpkgs": "nixpkgs"
       }
     },
