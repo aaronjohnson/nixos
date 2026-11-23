@@ -101,7 +101,7 @@
       };
       postPatch = "";  # upstream already raised cmake_minimum_required
     }))
-    mako hyprlock hypridle hyprshot hyprpaper pavucontrol
+    mako hyprlock hypridle hyprshot hyprpaper wpaperd pavucontrol
     hyprsunset hyprpicker blueman
     ((emacsPackagesFor emacs-pgtk).emacsWithPackages (p: [
       p.solarized-theme   # GUI Emacs follows the light/dark switch (see ~/.emacs.d/init.el)
