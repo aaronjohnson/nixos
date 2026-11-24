@@ -317,12 +317,15 @@
       addresses = true;
     };
   };
-  # HP LaserJet Pro M118dw on the LAN, driverless (IPP Everywhere).
+  # HP LaserJet Pro M118dw on the LAN, driverless (IPP Everywhere). By address, not its .local name: the
+  # printer is wired and the laptop on Wi-Fi, and the router doesn't carry mDNS between the two, so the
+  # name never resolved (2026-11-23). If printing stops, check the printer's address hasn't moved (or
+  # reserve it on the router).
   hardware.printers = {
     ensurePrinters = [{
       name = "HP_M118dw";
       location = "Home";
-      deviceUri = "ipp://NPI52C2C4.local/ipp/print";
+      deviceUri = "ipp://192.168.88.21/ipp/print";
       model = "everywhere";
       ppdOptions = {
         PageSize = "A4";
